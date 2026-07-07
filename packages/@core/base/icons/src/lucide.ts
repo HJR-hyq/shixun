@@ -51,10 +51,12 @@ export {
   Search,
   SearchX,
   Settings,
+  ShieldCheck,
   Shrink,
   Sun,
   SunMoon,
   SwatchBook,
+  User,
   UserRoundPen,
   X,
 } from 'lucide-vue-next';
