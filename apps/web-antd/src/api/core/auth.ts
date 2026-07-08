@@ -157,9 +157,13 @@ export async function sendEmailCodeApi(email: string) {
 /**
  * 校验邮箱验证码
  */
-export async function checkEmailCodeApi(email: string, code: string) {
+export async function checkEmailCodeApi(
+  email: string,
+  code: string,
+  password?: string,
+) {
   return externalRequestClient.get('/v1/Satff/CheckEmailCode', {
-    params: { email, code },
+    params: { email, code, password },
   });
 }
 
@@ -227,4 +231,34 @@ export async function changePwdApi(data: {
   oldPassword: string;
 }) {
   return externalRequestClient.post('/v1/Satff/ChangePwd', data);
+}
+
+/**
+ * 重置密码（触发邮件/短信验证码）
+ */
+export async function resetPwdApi(data: {
+  account: string;
+  type: 'email' | 'phone';
+}) {
+  return externalRequestClient.post('/v1/Satff/ResetPwd', data);
+}
+
+/**
+ * 发送短信验证码
+ */
+export async function sendPhoneCodeApi(phoneNumber: string) {
+  return externalRequestClient.get(
+    '/v1/VerificationCode/send-verification-code',
+    { params: { phoneNumber } },
+  );
+}
+
+/**
+ * 手机验证码校验
+ */
+export async function phoneVerifyApi(data: {
+  code: string;
+  phoneNumber: string;
+}) {
+  return externalRequestClient.post('/v1/VerificationCode/verify', data);
 }
