@@ -33,6 +33,10 @@ interface Props {
    * @zh_CN 按钮文本
    */
   submitButtonText?: string;
+  /**
+   * @zh_CN 是否显示表单标签
+   */
+  showLabel?: boolean;
 }
 
 defineOptions({
@@ -43,6 +47,7 @@ const props = withDefaults(defineProps<Props>(), {
   formSchema: () => [],
   loading: false,
   loginPath: '/auth/login',
+  showLabel: false,
   submitButtonText: '',
   subTitle: '',
   title: '',
@@ -55,8 +60,8 @@ const emit = defineEmits<{
 const [Form, formApi] = useVbenForm(
   reactive({
     commonConfig: {
-      hideLabel: true,
-      hideRequiredMark: true,
+      hideLabel: computed(() => !props.showLabel),
+      hideRequiredMark: computed(() => !props.showLabel),
     },
     schema: computed(() => props.formSchema),
     showDefaultActions: false,
