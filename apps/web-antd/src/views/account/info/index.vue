@@ -1,9 +1,14 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
+
+import { useUserStore } from '@vben/stores';
 
 import { Button, Card } from 'ant-design-vue';
 
+const userStore = useUserStore();
 const activeTab = ref('account');
+
+const userInfo = computed(() => userStore.userInfo);
 
 const tabs = [
   { key: 'profile', label: '个人资料', icon: '📋' },
@@ -49,7 +54,9 @@ const tabs = [
           >
             <div>
               <div class="text-foreground font-medium">手机号</div>
-              <div class="text-muted-foreground mt-1 text-sm">未绑定</div>
+              <div class="text-muted-foreground mt-1 text-sm">
+                {{ userInfo?.phoneNum || '未绑定' }}
+              </div>
             </div>
             <Button type="link">绑定</Button>
           </div>
@@ -61,7 +68,7 @@ const tabs = [
             <div>
               <div class="text-foreground font-medium">邮箱</div>
               <div class="text-muted-foreground mt-1 text-sm">
-                cc***@163.com
+                {{ userInfo?.email || '未绑定' }}
               </div>
             </div>
             <div>
