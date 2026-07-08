@@ -217,3 +217,14 @@ export async function setDisableUserApi(sid: number) {
     params: { sid },
   });
 }
+
+/**
+ * 修改密码
+ */
+export async function changePwdApi(data: {
+  confirmNewPassword: string;
+  newPassword: string;
+  oldPassword: string;
+}) {
+  return externalRequestClient.post('/v1/Satff/ChangePwd', data);
+}

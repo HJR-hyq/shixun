@@ -1,11 +1,23 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed, reactive, ref } from 'vue';
 
 import { useUserStore } from '@vben/stores';
 
-import { Button, Card } from 'ant-design-vue';
+import {
+  Button,
+  Card,
+  Form,
+  FormItem,
+  Input,
+  message,
+  Modal,
+} from 'ant-design-vue';
+
+import { changePwdApi } from '#/api/core/auth';
+import { useAuthStore } from '#/store';
 
 const userStore = useUserStore();
+const authStore = useAuthStore();
 const activeTab = ref('account');
 
 const userInfo = computed(() => userStore.userInfo);
@@ -14,6 +26,60 @@ const tabs = [
   { key: 'profile', label: '个人资料', icon: '📋' },
   { key: 'account', label: '账号设置', icon: '👤' },
 ];
+
+// 修改密码弹窗
+const pwdModalVisible = ref(false);
+const pwdLoading = ref(false);
+const pwdForm = reactive({
+  oldPassword: '',
+  newPassword: '',
+  confirmNewPassword: '',
+});
+
+const openPwdModal = () => {
+  pwdForm.oldPassword = '';
+  pwdForm.newPassword = '';
+  pwdForm.confirmNewPassword = '';
+  pwdModalVisible.value = true;
+};
+
+const handleCancelPwd = () => {
+  pwdModalVisible.value = false;
+};
+
+const handleConfirmPwd = async () => {
+  if (!pwdForm.oldPassword) {
+    message.warning('请输入原密码');
+    return;
+  }
+  if (!pwdForm.newPassword) {
+    message.warning('请输入新密码');
+    return;
+  }
+  if (pwdForm.newPassword !== pwdForm.confirmNewPassword) {
+    message.warning('两次输入的新密码不一致');
+    return;
+  }
+  if (pwdForm.newPassword.length < 6) {
+    message.warning('新密码长度不能少于6位');
+    return;
+  }
+  pwdLoading.value = true;
+  try {
+    await changePwdApi({
+      oldPassword: pwdForm.oldPassword,
+      newPassword: pwdForm.newPassword,
+      confirmNewPassword: pwdForm.confirmNewPassword,
+    });
+    message.success('密码修改成功，请使用新密码重新登录');
+    pwdModalVisible.value = false;
+    await authStore.logout(false);
+  } catch (error: any) {
+    message.error(error?.response?.data?.message || '密码修改失败');
+  } finally {
+    pwdLoading.value = false;
+  }
+};
 </script>
 
 <template>
@@ -100,10 +166,43 @@ const tabs = [
           <!-- 密码 -->
           <div class="flex items-center justify-between py-4">
             <div class="text-foreground font-medium">密码</div>
-            <Button type="link">修改密码</Button>
+            <Button type="link" @click="openPwdModal">修改密码</Button>
           </div>
         </Card>
       </div>
     </div>
+
+    <!-- 修改密码弹窗 -->
+    <Modal
+      v-model:open="pwdModalVisible"
+      :confirm-loading="pwdLoading"
+      title="修改密码"
+      @cancel="handleCancelPwd"
+      @ok="handleConfirmPwd"
+    >
+      <Form class="mt-4" layout="vertical">
+        <FormItem label="原密码" required>
+          <Input
+            v-model:value="pwdForm.oldPassword"
+            placeholder="请输入原密码"
+            type="password"
+          />
+        </FormItem>
+        <FormItem label="新密码" required>
+          <Input
+            v-model:value="pwdForm.newPassword"
+            placeholder="请输入新密码"
+            type="password"
+          />
+        </FormItem>
+        <FormItem label="确认密码" required>
+          <Input
+            v-model:value="pwdForm.confirmNewPassword"
+            placeholder="请再次输入新密码"
+            type="password"
+          />
+        </FormItem>
+      </Form>
+    </Modal>
   </div>
 </template>
