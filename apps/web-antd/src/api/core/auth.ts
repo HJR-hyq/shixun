@@ -1,7 +1,7 @@
 import { RequestClient } from '@vben/request';
 import { useAccessStore } from '@vben/stores';
 
-import { baseRequestClient } from '#/api/request';
+import { baseRequestClient, requestClient } from '#/api/request';
 
 export const externalRequestClient = new RequestClient({
   baseURL: '',
@@ -261,4 +261,165 @@ export async function phoneVerifyApi(data: {
   phoneNumber: string;
 }) {
   return externalRequestClient.post('/v1/VerificationCode/verify', data);
+}
+
+// ==================== 组织管理 ====================
+
+export namespace OrganizationApi {
+  export interface Organization {
+    id: number;
+    name: string;
+    parentId: number;
+    level: number;
+    isLeaf: boolean;
+    orderNum: number;
+    createTime: string;
+    updateTime: string;
+    operator: string;
+    children?: Organization[];
+  }
+
+  export interface AddOrganizationParams {
+    name: string;
+    parentId: number;
+  }
+
+  export interface UpdateOrganizationParams {
+    id: number;
+    name: string;
+  }
+}
+
+/**
+ * 获取组织树
+ */
+export async function getOrganizationTreeApi() {
+  return requestClient.get<OrganizationApi.Organization[]>('/organization');
+}
+
+/**
+ * 添加组织
+ */
+export async function addOrganizationApi(
+  data: OrganizationApi.AddOrganizationParams,
+) {
+  return requestClient.post('/organization/add', data);
+}
+
+/**
+ * 编辑组织
+ */
+export async function updateOrganizationApi(
+  data: OrganizationApi.UpdateOrganizationParams,
+) {
+  return requestClient.post('/organization/update', data);
+}
+
+/**
+ * 删除组织
+ */
+export async function deleteOrganizationApi(id: number) {
+  return requestClient.post('/organization/delete', null, { params: { id } });
+}
+
+// ==================== 用户管理（新） ====================
+
+export namespace UserManageApi {
+  export interface UserItem {
+    id: number;
+    staffId: number;
+    nickname: string;
+    realName: string;
+    account: string;
+    userName: string;
+    gender: string;
+    sex: null | string;
+    orgId: number;
+    orgName: string;
+    email: string;
+    phone: string;
+    phoneNum: null | string;
+    createTime: string;
+    addtime: string;
+    status: string;
+    approved: number;
+    operator?: string;
+  }
+
+  export interface UserListParams {
+    orgId?: number;
+    nickname?: string;
+    status?: string;
+    currentPage?: number;
+    pageSize?: number;
+  }
+
+  export interface UserListResult {
+    items: UserItem[];
+    total: number;
+  }
+
+  export interface AddUserParams {
+    nickname: string;
+    account: string;
+    gender: string;
+    orgId: number;
+    email?: string;
+    phone?: string;
+  }
+
+  export interface UpdateUserParams {
+    id: number;
+    nickname: string;
+    gender: string;
+    orgId: number;
+    email?: string;
+    phone?: string;
+  }
+}
+
+/**
+ * 获取用户列表（按组织筛选）
+ */
+export async function getUserManageListApi(
+  params: UserManageApi.UserListParams,
+) {
+  return externalRequestClient.get<UserManageApi.UserListResult>(
+    '/v1/Satff/GetStaffAllByOrganizationstructure',
+    { params },
+  );
+}
+
+/**
+ * 添加用户
+ */
+export async function addUserManageApi(data: UserManageApi.AddUserParams) {
+  return externalRequestClient.post('/v1/Satff/AddStaff', data);
+}
+
+/**
+ * 编辑用户
+ */
+export async function updateUserManageApi(
+  data: UserManageApi.UpdateUserParams,
+) {
+  return externalRequestClient.post('/v1/Satff/UpdateStaff', data);
+}
+
+/**
+ * 删除用户
+ */
+export async function deleteUserManageApi(id: number) {
+  return externalRequestClient.post('/v1/Satff/DeleteStaff', null, {
+    params: { id },
+  });
+}
+
+/**
+ * 重置用户密码
+ */
+export async function resetUserPasswordApi(id: number) {
+  return externalRequestClient.post('/v1/Satff/ResetPassword', null, {
+    params: { id },
+  });
 }

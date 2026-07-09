@@ -6,17 +6,26 @@ const routes: RouteRecordRaw[] = [
   {
     component: BasicLayout,
     meta: {
-      icon: 'lucide:settings',
+      icon: 'lucide:users',
       order: 2,
-      title: '系统管理',
+      title: '用户管理',
     },
-    name: 'System',
+    name: 'UserManagement',
     path: '/system',
     children: [
       {
-        name: 'UserManagement',
-        path: '/system/user',
-        component: () => import('#/views/system/user/index.vue'),
+        name: 'Organization',
+        path: '/system/organization',
+        component: () => import('#/views/system/organization/index.vue'),
+        meta: {
+          icon: 'lucide:building-2',
+          title: '组织管理',
+        },
+      },
+      {
+        name: 'UserList',
+        path: '/system/user-list',
+        component: () => import('#/views/system/user-list/index.vue'),
         meta: {
           icon: 'lucide:users',
           title: '用户管理',
