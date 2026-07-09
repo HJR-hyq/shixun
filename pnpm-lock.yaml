@@ -121,8 +121,8 @@ catalogs:
       specifier: ^4.15.0
       version: 4.15.0
     '@vite-pwa/vitepress':
-      specifier: ^0.5.3
-      version: 0.5.3
+      specifier: ^1.1.0
+      version: 1.1.0
     '@vitejs/plugin-vue':
       specifier: ^5.2.1
       version: 5.2.1
@@ -855,7 +855,7 @@ importers:
         version: link:../internal/vite-config
       '@vite-pwa/vitepress':
         specifier: 'catalog:'
-        version: 0.5.3(vite-plugin-pwa@0.21.1(vite@5.4.11(@types/node@22.10.2)(less@4.2.1)(sass@1.80.6)(terser@5.37.0))(workbox-build@7.3.0)(workbox-window@7.3.0))
+        version: 1.1.0(vite-plugin-pwa@0.21.1(vite@5.4.11(@types/node@22.10.2)(less@4.2.1)(sass@1.80.6)(terser@5.37.0))(workbox-build@7.3.0)(workbox-window@7.3.0))
       vitepress:
         specifier: 'catalog:'
         version: 1.5.0(@algolia/client-search@5.18.0)(@types/node@22.10.2)(async-validator@4.2.5)(axios@1.7.9)(change-case@5.4.4)(less@4.2.1)(nprogress@0.2.0)(postcss@8.4.49)(qrcode@1.5.4)(sass@1.80.6)(search-insights@2.17.3)(sortablejs@1.15.6)(terser@5.37.0)(typescript@5.7.2)
@@ -3411,6 +3411,7 @@ packages:
   '@faker-js/faker@9.3.0':
     resolution: {integrity: sha512-r0tJ3ZOkMd9xsu3VRfqlFR6cz0V/jFYRswAIpC+m/DIfAUXq7g8N7wTAlhSANySXYGKzGryfDXwtwsY8TxEIDw==}
     engines: {node: '>=18.0.0', npm: '>=9.0.0'}
+    deprecated: Please update to a newer version
 
   '@floating-ui/core@1.6.8':
     resolution: {integrity: sha512-7XJ9cPU+yI2QeLS+FCSlqNFZJq8arvswefkZrYI1yQBbftw6FyrZOxYSh+9S7z7TpeWlRt9zJ5IhM1WIL334jA==}
@@ -3502,21 +3503,21 @@ packages:
     resolution: {integrity: sha512-6GT1BJ852gZ0gItNZN2krX5QAmea+cmdjMvsWohArAZ3GmHdnNANEcF9JjPXAMRtQ6Ux5E269ymamg/+WU6tQA==}
     engines: {node: '>= 16'}
 
-  '@intlify/message-compiler@11.0.0-rc.1':
-    resolution: {integrity: sha512-TGw2uBfuTFTegZf/BHtUQBEKxl7Q/dVGLoqRIdw8lFsp9g/53sYn5iD+0HxIzdYjbWL6BTJMXCPUHp9PxDTRPw==}
-    engines: {node: '>= 16'}
+  '@intlify/message-compiler@12.0.0-alpha.4':
+    resolution: {integrity: sha512-F4yHuJzI2ZXtXTW2B1VhuNULAOjR5bniFSC/Z0rLWRYPO43pVgKLu+FPDoJq13OjTFq4X5hx2s855M4gqPU/pA==}
+    engines: {node: '>= 22'}
 
   '@intlify/shared@10.0.5':
     resolution: {integrity: sha512-bmsP4L2HqBF6i6uaMqJMcFBONVjKt+siGluRq4Ca4C0q7W2eMaVZr8iCgF9dKbcVXutftkC7D6z2SaSMmLiDyA==}
     engines: {node: '>= 16'}
 
-  '@intlify/shared@11.0.0-rc.1':
-    resolution: {integrity: sha512-8tR1xe7ZEbkabTuE/tNhzpolygUn9OaYp9yuYAF4MgDNZg06C3Qny80bes2/e9/Wm3aVkPUlCw6WgU7mQd0yEg==}
-    engines: {node: '>= 16'}
+  '@intlify/shared@11.4.6':
+    resolution: {integrity: sha512-m1p1HHAMLhqSpTRH7VnXdrN0CQ4y+9vunFkpLkbD8soIuBsnQdawZXqMCgvwI2UVF9Ww7sVaw7g9tV2VO7shoA==}
+    engines: {node: '>= 22'}
 
-  '@intlify/shared@11.0.1':
-    resolution: {integrity: sha512-lH164+aDDptHZ3dBDbIhRa1dOPQUp+83iugpc+1upTOWCnwyC1PVis6rSWNMMJ8VQxvtHQB9JMib48K55y0PvQ==}
-    engines: {node: '>= 16'}
+  '@intlify/shared@12.0.0-alpha.4':
+    resolution: {integrity: sha512-MfunEN3/yQjD1Q9HnD4Qtvg/qLYnR+tK3mEz/EEvikJO+Hu8ICe7Rqh6uusLSjpWy6ECVt2p5HGXlYA12UBweA==}
+    engines: {node: '>= 22'}
 
   '@intlify/unplugin-vue-i18n@6.0.2':
     resolution: {integrity: sha512-5AuwBfdFtA4OSh31tfGpjhvmh7BVCzClHCgFlVdNM3ojyai3UZY4ViYh35TlE1xeWFyduOtUsG12r70xy24nzg==}
@@ -4484,11 +4485,11 @@ packages:
     engines: {node: '>=16'}
     hasBin: true
 
-  '@vite-pwa/vitepress@0.5.3':
-    resolution: {integrity: sha512-ZNtBxZhS5Enp66z01gKuovTQzSorIpc6o9FEVwOk7kNivzuc4Q5RB04fcbBI1qqHE67rDmm+XqVQw0nj801gmw==}
+  '@vite-pwa/vitepress@1.1.0':
+    resolution: {integrity: sha512-enif5C2JmepS69Ak7PSr6K3Eimsg7VyryZo1Z6NiIPNDnjXFlOqxwBYaq8R/d0M7akArJsjos7KmQnEfNFf5nA==}
     peerDependencies:
-      '@vite-pwa/assets-generator': ^0.2.6
-      vite-plugin-pwa: '>=0.20.5 <1'
+      '@vite-pwa/assets-generator': ^1.0.0
+      vite-plugin-pwa: ^1.2.0
     peerDependenciesMeta:
       '@vite-pwa/assets-generator':
         optional: true
@@ -7331,6 +7332,7 @@ packages:
 
   lodash.get@4.4.2:
     resolution: {integrity: sha512-z+Uw/vLuy6gQe8cfaFWD7p0wVv8fJl3mbzXh33RS+0oW2wvUqiRXiQ69gLWSLpgB5/6sU+r6BlQR0MBILadqTQ==}
+    deprecated: This package is deprecated. Use the optional chaining (?.) operator instead.
 
   lodash.includes@4.3.0:
     resolution: {integrity: sha512-W3Bx6mdkRTGtlJISOvVD/lbqjTlPPUDTMnlXZFnVwi9NKJ6tiAk6LVdlhZMm17VZisqhKcgzpO5Wz91PCt5b0w==}
@@ -7343,6 +7345,7 @@ packages:
 
   lodash.isequal@4.5.0:
     resolution: {integrity: sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==}
+    deprecated: This package is deprecated. Use require('node:util').isDeepStrictEqual instead.
 
   lodash.isinteger@4.0.4:
     resolution: {integrity: sha512-DBwtEWN2caHQ9/imiNeEA5ys1JoRtRfY3d7V9wkqtbycnAmTvRRmbHKDV4a0EYc678/dia0jrte4tjYwVBaZUA==}
@@ -8913,6 +8916,7 @@ packages:
   rollup-plugin-visualizer@5.13.1:
     resolution: {integrity: sha512-vMg8i6BprL8aFm9DKvL2c8AwS8324EgymYQo9o6E26wgVvwMhsJxS37aNL6ZsU7X9iAcMYwdME7gItLfG5fwJg==}
     engines: {node: '>=18'}
+    deprecated: Contains unintended breaking changes
     hasBin: true
     peerDependencies:
       rolldown: 1.x
@@ -9154,6 +9158,7 @@ packages:
   source-map@0.8.0-beta.0:
     resolution: {integrity: sha512-2ymg6oRBpebeZi9UUNsgQ89bhx01TcTkmNTGnNO88imTmbSgy4nfujrgVEFKWpMTEGA11EDkTt7mqObTPdigIA==}
     engines: {node: '>= 8'}
+    deprecated: The work that was done in this beta branch won't be included in future versions
 
   sourcemap-codec@1.4.8:
     resolution: {integrity: sha512-9NykojV5Uih4lgo5So5dtw+f0JgJX30KCNI8gwhz2J9A15wD0Ml6tjHKwf6fTSa6fAdVBdZeNOs9eJ71qCk8vA==}
@@ -10169,6 +10174,7 @@ packages:
   whatwg-encoding@3.1.1:
     resolution: {integrity: sha512-6qN4hJdMwfYBtE3YBTTHhoeuUrDBPZmbQaxWAqSALV/MeEnR5z1xd8UKud2RAkFoPkmB+hli1TZSnyi84xz1vQ==}
     engines: {node: '>=18'}
+    deprecated: Use @exodus/bytes instead for a more spec-conformant and faster implementation
 
   whatwg-mimetype@3.0.0:
     resolution: {integrity: sha512-nt+N2dzIutVRxARx1nghPKGv1xHikU7HKdfafKkLNLindmPU/ch3U31NOCGGA/dmPcmb1VlofO0vnKAcsm0o/Q==}
@@ -12272,8 +12278,8 @@ snapshots:
 
   '@intlify/bundle-utils@10.0.0(vue-i18n@10.0.5(vue@3.5.13(typescript@5.7.2)))':
     dependencies:
-      '@intlify/message-compiler': 11.0.0-rc.1
-      '@intlify/shared': 11.0.0-rc.1
+      '@intlify/message-compiler': 12.0.0-alpha.4
+      '@intlify/shared': 12.0.0-alpha.4
       acorn: 8.14.0
       escodegen: 2.1.0
       estree-walker: 2.0.2
@@ -12294,23 +12300,23 @@ snapshots:
       '@intlify/shared': 10.0.5
       source-map-js: 1.2.1
 
-  '@intlify/message-compiler@11.0.0-rc.1':
+  '@intlify/message-compiler@12.0.0-alpha.4':
     dependencies:
-      '@intlify/shared': 11.0.0-rc.1
+      '@intlify/shared': 12.0.0-alpha.4
       source-map-js: 1.2.1
 
   '@intlify/shared@10.0.5': {}
 
-  '@intlify/shared@11.0.0-rc.1': {}
+  '@intlify/shared@11.4.6': {}
 
-  '@intlify/shared@11.0.1': {}
+  '@intlify/shared@12.0.0-alpha.4': {}
 
   '@intlify/unplugin-vue-i18n@6.0.2(@vue/compiler-dom@3.5.13)(eslint@9.17.0(jiti@2.4.2))(rollup@4.29.1)(typescript@5.7.2)(vue-i18n@10.0.5(vue@3.5.13(typescript@5.7.2)))(vue@3.5.13(typescript@5.7.2))':
     dependencies:
       '@eslint-community/eslint-utils': 4.4.1(eslint@9.17.0(jiti@2.4.2))
       '@intlify/bundle-utils': 10.0.0(vue-i18n@10.0.5(vue@3.5.13(typescript@5.7.2)))
-      '@intlify/shared': 11.0.1
-      '@intlify/vue-i18n-extensions': 7.0.0(@intlify/shared@11.0.1)(@vue/compiler-dom@3.5.13)(vue-i18n@10.0.5(vue@3.5.13(typescript@5.7.2)))(vue@3.5.13(typescript@5.7.2))
+      '@intlify/shared': 11.4.6
+      '@intlify/vue-i18n-extensions': 7.0.0(@intlify/shared@11.4.6)(@vue/compiler-dom@3.5.13)(vue-i18n@10.0.5(vue@3.5.13(typescript@5.7.2)))(vue@3.5.13(typescript@5.7.2))
       '@rollup/pluginutils': 5.1.4(rollup@4.29.1)
       '@typescript-eslint/scope-manager': 8.18.1
       '@typescript-eslint/typescript-estree': 8.18.1(typescript@5.7.2)
@@ -12332,11 +12338,11 @@ snapshots:
       - supports-color
       - typescript
 
-  '@intlify/vue-i18n-extensions@7.0.0(@intlify/shared@11.0.1)(@vue/compiler-dom@3.5.13)(vue-i18n@10.0.5(vue@3.5.13(typescript@5.7.2)))(vue@3.5.13(typescript@5.7.2))':
+  '@intlify/vue-i18n-extensions@7.0.0(@intlify/shared@11.4.6)(@vue/compiler-dom@3.5.13)(vue-i18n@10.0.5(vue@3.5.13(typescript@5.7.2)))(vue@3.5.13(typescript@5.7.2))':
     dependencies:
       '@babel/parser': 7.26.3
     optionalDependencies:
-      '@intlify/shared': 11.0.1
+      '@intlify/shared': 11.4.6
       '@vue/compiler-dom': 3.5.13
       vue: 3.5.13(typescript@5.7.2)
       vue-i18n: 10.0.5(vue@3.5.13(typescript@5.7.2))
@@ -13473,7 +13479,7 @@ snapshots:
       - rollup
       - supports-color
 
-  '@vite-pwa/vitepress@0.5.3(vite-plugin-pwa@0.21.1(vite@5.4.11(@types/node@22.10.2)(less@4.2.1)(sass@1.80.6)(terser@5.37.0))(workbox-build@7.3.0)(workbox-window@7.3.0))':
+  '@vite-pwa/vitepress@1.1.0(vite-plugin-pwa@0.21.1(vite@5.4.11(@types/node@22.10.2)(less@4.2.1)(sass@1.80.6)(terser@5.37.0))(workbox-build@7.3.0)(workbox-window@7.3.0))':
     dependencies:
       vite-plugin-pwa: 0.21.1(vite@5.4.11(@types/node@22.10.2)(less@4.2.1)(sass@1.80.6)(terser@5.37.0))(workbox-build@7.3.0)(workbox-window@7.3.0)
 
